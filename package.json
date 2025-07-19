@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Namaste react bundler",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build src/index.html"
   },
   "author": "",
   "license": "ISC",
@@ -11,9 +13,14 @@
     "parcel": "^2.15.4"
   },
   "dependencies": {
+    "parcel-plugin-static-files-copy": "^2.6.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
-  "browserlists": ["last two versions"]
-  
+  "browserlists": [
+    "last two versions"
+  ],
+  "staticFiles": {
+        "staticPath": "assets"
+}
 }
