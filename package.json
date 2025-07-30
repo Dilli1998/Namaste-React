@@ -13,14 +13,16 @@
     "parcel": "^2.15.4"
   },
   "dependencies": {
+    "formik": "^2.4.6",
     "parcel-plugin-static-files-copy": "^2.6.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-router": "^7.7.1"
   },
   "browserlists": [
     "last two versions"
   ],
   "staticFiles": {
-        "staticPath": "assets"
-}
+    "staticPath": "assets"
+  }
 }
