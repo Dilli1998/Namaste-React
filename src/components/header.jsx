@@ -36,10 +36,10 @@ const Header = () => {
           </li>
         </ul>
 
-        <div>
-          <button onClick={loginClick}>
-            <Link to="/login">{loginButton}</Link>
-          </button>
+        <div className="rightNav">
+          <Link to="/login" onClick={loginClick} className="login-btn">
+            {loginButton}
+          </Link>
         </div>
       </div>
     </>
