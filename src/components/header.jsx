@@ -39,6 +39,12 @@ const Header = () => {
               Contact
             </Link>
           </li>
+
+          <li>
+            <Link to="/instamart" className="nav-link">
+              Instamart
+            </Link>
+          </li>
         </ul>
 
         <div className="rightNav">

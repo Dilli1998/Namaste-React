@@ -8,8 +8,10 @@ import AboutUs from "./components/About";
 import Contact from "./components/Contact";
 import Login from "./components/Login";
 import RestaurantMenu from "./components/RestaurantMenu";
-import Profile from "./components/Profile";
 import ProfileClass from "./components/ProfileClass";
+import { lazy, Suspense } from "react";
+
+const Instamart = lazy(() => import("./components/Instamart"));
 
 const AppLayout = () => {
   return (
@@ -48,6 +50,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurantMenu/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/instamart",
+        element: (
+          <Suspense fallback={<h1>Loading Instamart...</h1>}>
+            <Instamart />
+          </Suspense>
+        ),
       },
     ],
   },
