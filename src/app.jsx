@@ -1,15 +1,15 @@
 import ReactDOM from "react-dom/client";
-import Header from "./components/header";
-import Body from "./Components/body";
-import Footer from "./components/footer";
+import Header from "./components/Header";
+import Body from "./components/Body";
+import Footer from "./components/Footer";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
-import AppError from "./components/error";
-import AboutUs from "./components/about";
-import Contact from "./components/contact";
-import Login from "./components/login";
-import RestaurantMenu from "./components/restaurantMenu";
-import Profile from "./components/profile";
-import ProfileClass from "./components/profileClass";
+import AppError from "./components/Error";
+import AboutUs from "./components/About";
+import Contact from "./components/Contact";
+import Login from "./components/Login";
+import RestaurantMenu from "./components/RestaurantMenu";
+import Profile from "./components/Profile";
+import ProfileClass from "./components/ProfileClass";
 
 const AppLayout = () => {
   return (

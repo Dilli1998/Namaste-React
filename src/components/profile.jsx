@@ -1,18 +1,8 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import useUserInfo from "../utils/useUserInfo";
 
 const Profile = () => {
-  const [userInfo, setUserInfo] = useState({});
+  const userInfo = useUserInfo();
 
-  useEffect(() => {
-    getUserInfo();
-  }, []);
-
-  const getUserInfo = async () => {
-    const response = await fetch("https://api.github.com/users/dilli1998");
-    const jsonData = await response.json();
-    setUserInfo(jsonData);
-  };
   const { login, avatar_url } = userInfo;
   return (
     <>

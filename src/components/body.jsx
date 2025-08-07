@@ -1,43 +1,19 @@
 import { useState, useEffect } from "react";
-import { RestaurantCard } from "./restaurantCard";
-import Shimmer from "../components/shimmer";
+import RestaurantCard from "../components/RestaurantCard";
+import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import { filterRestaurant } from "../utils/helper";
+import useAllRestaurant from "../utils/useAllRestaurant";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [allRestaurants, setAllRestaurants] = useState([]);
+  const { allRestaurants } = useAllRestaurant(); // ✅ Destructure from hook
 
-  const filterRestaurant = (restaurantName, restaurants) => {
-    console.log(restaurants);
-    const filterData = restaurants.filter((restaurant) =>
-      restaurant.info.name.toLowerCase().includes(restaurantName.toLowerCase())
-    );
-
-    return restaurantName ? filterData : allRestaurants;
-  };
-
+  // Sync filteredRestaurants when allRestaurants is loaded
   useEffect(() => {
-    allRestaurantList();
-  }, []);
-
-  const allRestaurantList = async () => {
-    const response = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-    );
-    const responseData = await response.json();
-
-    const allRestaurantsJson =
-      responseData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-
-    console.log(responseData);
-    console.log(allRestaurantsJson);
-    console.log(allRestaurantsJson[0].info.id);
-
-    setAllRestaurants(allRestaurantsJson);
-    setFilteredRestaurants(allRestaurantsJson);
-  };
+    setFilteredRestaurants(allRestaurants);
+  }, [allRestaurants]);
 
   return allRestaurants.length === 0 ? (
     <h1>
@@ -58,13 +34,12 @@ const Body = () => {
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
-          ></input>
+          />
           <button
             className="searchButton"
             onClick={() => {
-              setFilteredRestaurants(
-                filterRestaurant(searchText, allRestaurants)
-              );
+              const filtered = filterRestaurant(searchText, allRestaurants);
+              setFilteredRestaurants(filtered);
             }}
           >
             Search

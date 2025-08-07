@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { GIT_USER_INFO_API } from "../config/constant";
 class ProfileClass extends Component {
   constructor(props) {
     super(props);
@@ -8,7 +9,7 @@ class ProfileClass extends Component {
     };
   }
   async componentDidMount() {
-    const response = await fetch("https://api.github.com/users/dilli1998");
+    const response = await fetch(GIT_USER_INFO_API);
     const jsonData = await response.json();
     this.setState({
       userInfo: jsonData,

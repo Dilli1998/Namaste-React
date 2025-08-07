@@ -1,3 +1,11 @@
+export const GIT_USER_INFO_API = "https://api.github.com/users/dilli1998";
+
+export const CLOUDINARY_IMAGE_ID_API =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+
+export const ALL_RESTAURANT_LIST_API =
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING";
+
 export const restaurantList = [
   {
     image:

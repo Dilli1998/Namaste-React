@@ -1,6 +1,7 @@
 import foodVilla from "url:../assets/foodVilla.png";
 import { useState } from "react";
 import { Link } from "react-router";
+import useOnline from "../utils/useOnline";
 
 const Header = () => {
   const [loginButton, setLoginButton] = useState("Login");
@@ -9,6 +10,10 @@ const Header = () => {
       ? setLoginButton("LogOut")
       : setLoginButton("Login");
   };
+
+  const Online = useOnline();
+
+  console.log(Online);
   return (
     <>
       <div className="header">
@@ -38,6 +43,7 @@ const Header = () => {
 
         <div className="rightNav">
           <Link to="/login" onClick={loginClick} className="login-btn">
+            {Online ? "✅" : "🚫"}
             {loginButton}
           </Link>
         </div>
