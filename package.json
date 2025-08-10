@@ -13,6 +13,7 @@
     "parcel": "^2.15.4"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
     "formik": "^2.4.6",
     "parcel-plugin-static-files-copy": "^2.6.0",
     "react": "^19.1.0",

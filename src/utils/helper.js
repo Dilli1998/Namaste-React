@@ -1,12 +1,10 @@
-import { ALL_RESTAURANT_LIST_API } from "../config/constant";
 import { GIT_USER_INFO_API } from "../config/constant";
 
 export const filterRestaurant = (restaurantName, restaurants) => {
-  const filterData = restaurants.filter((restaurant) =>
+  if (!restaurantName) return restaurants;
+  return restaurants.filter((restaurant) =>
     restaurant.info.name.toLowerCase().includes(restaurantName.toLowerCase())
   );
-
-  return restaurantName ? filterData : allRestaurants;
 };
 
 export const getUserInfo = async () => {

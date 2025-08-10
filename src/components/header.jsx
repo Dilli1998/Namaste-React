@@ -16,39 +16,43 @@ const Header = () => {
   console.log(Online);
   return (
     <>
-      <div className="header">
-        <div className="logo">
+      <div className="flex justify-between border-black px-0 py-1 mb-0 bg-black">
+        <div className="w-20 h-fit">
           <a href="/">
-            <img style={{ width: "100%" }} src={foodVilla}></img>
+            <img className="w-20 h-fit" src={foodVilla}></img>
           </a>
         </div>
 
-        <ul className="rightNav">
-          <li>
-            <Link to="/" className="nav-link">
+        <ul className="flex">
+          <li className="list-none p-2.5 pb-0 mt-2 h-fit text-white">
+            <Link to="/" className="no-underline text-white p-0 m-0">
               Home
             </Link>
           </li>
-          <li>
-            <Link to="/about" className="nav-link">
+          <li className="list-none p-2.5 pb-0 mt-2 h-fit text-white">
+            <Link to="/about" className="no-underline text-white p-0 m-0">
               About Us
             </Link>
           </li>
-          <li>
-            <Link to="/contact" className="nav-link">
+          <li className="list-none p-2.5 pb-0 mt-2 h-fit text-white">
+            <Link to="/contact" className="no-underline text-white p-0 m-0">
               Contact
             </Link>
           </li>
 
-          <li>
-            <Link to="/instamart" className="nav-link">
+          <li className="list-none p-2.5 pb-0 mt-2 h-fit text-white">
+            <Link to="/instamart" className="no-underline text-white p-0 m-0">
               Instamart
             </Link>
           </li>
         </ul>
 
-        <div className="rightNav">
-          <Link to="/login" onClick={loginClick} className="login-btn">
+        <div className="flex">
+          <Link
+            to="/login"
+            onClick={loginClick}
+            className="login-btn no-underline text-[#cb9b58] p-2.5 pb-0 mt-2 h-fit"
+          >
             {Online ? "✅" : "🚫"}
             {loginButton}
           </Link>

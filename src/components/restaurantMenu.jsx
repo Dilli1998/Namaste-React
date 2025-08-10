@@ -15,12 +15,12 @@ const RestaurantMenu = () => {
             menuItem?.card?.info;
 
           return (
-            <div key={id} style={{ marginBottom: "2rem" }}>
+            <div key={id} className="mb-8">
               {imageId && (
                 <img
                   src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${imageId}`}
                   alt={name}
-                  style={{ width: "200px", borderRadius: "8px" }}
+                  className="w-52 border-radius: 0.5rem;"
                 />
               )}
               <h3>{name}</h3>
