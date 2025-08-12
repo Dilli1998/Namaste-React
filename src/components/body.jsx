@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import RestaurantCard from "../components/RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import { filterRestaurant } from "../utils/helper";
 import useAllRestaurant from "../utils/useAllRestaurant";
+import UserContext from "../utils/useContext";
 
 const Body = () => {
+  const { user, setUser } = useContext(UserContext);
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const { allRestaurants } = useAllRestaurant(); // ✅ Destructure from hook
@@ -43,6 +45,20 @@ const Body = () => {
           >
             Search
           </button>
+          <input
+            className="bg-white border border-black"
+            type="text"
+            placeholder="name"
+            value={user.name}
+            onChange={(e) => setUser({ ...user, name: e.target.value })}
+          />
+          <input
+            className="bg-white border border-black"
+            type="text"
+            placeholder="email"
+            value={user.email}
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
+          />
         </div>
         {filteredRestaurants.length === 0 ? (
           <h1 className="text-white">No Matching Restaurant Found</h1>
@@ -54,7 +70,9 @@ const Body = () => {
                 to={`/restaurantMenu/${restaurant.info.id}`}
                 className="no-underline flex-[0_0_calc(20%-15px)] bg-white"
               >
-                <RestaurantCard {...restaurant.info} />
+                <UserContext.Provider value={{ user: user }}>
+                  <RestaurantCard {...restaurant.info} />
+                </UserContext.Provider>
               </Link>
             ))}
           </div>

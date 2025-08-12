@@ -1,6 +1,9 @@
 import { CLOUDINARY_IMAGE_ID_API } from "../config/constant";
+import { useContext } from "react";
+import UserContext from "../utils/useContext";
 
 const RestaurantCard = ({ cloudinaryImageId, name, cuisines, avgRating }) => {
+  const user = useContext(UserContext);
   return (
     <>
       <div className="p-[15px] flex flex-col items-center text-center rounded-[12px] bg-white shadow-md cursor-pointer">
@@ -17,6 +20,8 @@ const RestaurantCard = ({ cloudinaryImageId, name, cuisines, avgRating }) => {
         <h3 className="my-[5px] font-normal text-black text-[0.9em]">
           {avgRating} star
         </h3>
+        <h3>{user.name}</h3>
+        <h3>{user.email}</h3>
       </div>
     </>
   );

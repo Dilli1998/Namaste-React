@@ -1,9 +1,11 @@
 import foodVilla from "url:../assets/foodVilla.png";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/useContext";
 
 const Header = () => {
+  const { user } = useContext(UserContext);
   const [loginButton, setLoginButton] = useState("Login");
   const loginClick = () => {
     loginButton === "Login"
@@ -48,6 +50,9 @@ const Header = () => {
         </ul>
 
         <div className="flex">
+          <h3 className="text-white pt-4">
+            {user.name} - {user.email}
+          </h3>
           <Link
             to="/login"
             onClick={loginClick}

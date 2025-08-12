@@ -9,16 +9,23 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import RestaurantMenu from "./components/RestaurantMenu";
 import ProfileClass from "./components/ProfileClass";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
+import UserContext from "./utils/useContext";
 
 const Instamart = lazy(() => import("./components/Instamart"));
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "Dillibabu.S",
+    email: "dillid985@gmail.com",
+  });
   return (
     <>
-      <Header />
-      <Outlet />
-      <Footer />
+      <UserContext.Provider value={{ user: user, setUser: setUser }}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </UserContext.Provider>
     </>
   );
 };
